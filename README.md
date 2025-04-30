@@ -25,8 +25,8 @@
 ### Via CDN
 
 ```html
-<!-- Tailwind CSS (opcional - a biblioteca pode carregá-lo automaticamente) -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+<!-- Tailwind CSS 4 (o script carrega automaticamente) -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 <!-- MagicMobile.js -->
 <script src="https://cdn.jsdelivr.net/gh/SEU-USUARIO/magic-mobile/MagicMobile.js"></script>

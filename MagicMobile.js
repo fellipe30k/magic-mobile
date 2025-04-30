@@ -4,7 +4,7 @@
  * Com estilo inspirado na Apple e utilizando Tailwind CSS 4
  * 
  * Uso:
- * 1. Inclua a referência ao Tailwind CSS 4
+ * 1. Inclua o script do Tailwind CSS 4 Browser
  * 2. Inclua esta biblioteca
  * 3. Chame MagicMobile.transform() para transformar a página
  */
@@ -15,17 +15,16 @@
     // Verifica se Tailwind CSS está disponível
     function ensureTailwind() {
       return new Promise((resolve, reject) => {
-        if (document.querySelector('link[href*="tailwind"]')) {
+        if (document.querySelector('script[src*="tailwindcss/browser"]')) {
           resolve();
           return;
         }
         
-        const tailwindLink = document.createElement('link');
-        tailwindLink.rel = 'stylesheet';
-        tailwindLink.href = 'https://cdn.jsdelivr.net/npm/tailwindcss@4.0.0/dist/tailwind.min.css';
-        tailwindLink.onload = resolve;
-        tailwindLink.onerror = () => reject(new Error('Não foi possível carregar o Tailwind CSS'));
-        document.head.appendChild(tailwindLink);
+        const tailwindScript = document.createElement('script');
+        tailwindScript.src = 'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4';
+        tailwindScript.onload = resolve;
+        tailwindScript.onerror = () => reject(new Error('Não foi possível carregar o Tailwind CSS'));
+        document.head.appendChild(tailwindScript);
       });
     }
   
@@ -127,20 +126,23 @@
         this.addResponsiveStyles();
       }
   
-      // Adiciona estilos CSS responsivos
+      // Adiciona media queries para classes responsivas
       static addResponsiveStyles() {
-        const style = document.createElement('style');
-        style.textContent = `
-          @media (max-width: 768px) {
-            .mm-desktop-only { display: none !important; }
-            .mm-flex-col-mobile { flex-direction: column !important; }
-            .mm-full-width-mobile { width: 100% !important; }
-            .mm-text-center-mobile { text-align: center !important; }
-            .mm-my-2-mobile { margin-top: 0.5rem !important; margin-bottom: 0.5rem !important; }
-            .mm-px-4-mobile { padding-left: 1rem !important; padding-right: 1rem !important; }
+        const responsiveStyle = document.createElement('style');
+        responsiveStyle.setAttribute('type', 'text/tailwindcss');
+        responsiveStyle.textContent = `
+          @layer utilities {
+            @media (max-width: 768px) {
+              .mm-desktop-only { display: none !important; }
+              .mm-flex-col-mobile { flex-direction: column !important; }
+              .mm-full-width-mobile { width: 100% !important; }
+              .mm-text-center-mobile { text-align: center !important; }
+              .mm-my-2-mobile { margin-top: 0.5rem !important; margin-bottom: 0.5rem !important; }
+              .mm-px-4-mobile { padding-left: 1rem !important; padding-right: 1rem !important; }
+            }
           }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(responsiveStyle);
         
         // Aplica classes personalizadas
         document.querySelectorAll('.row, .flex, [class*="d-flex"]').forEach(el => {
@@ -154,26 +156,38 @@
   
       // Aplica estilo inspirado na Apple
       static applyAppleStyle() {
-        // Adiciona fonte San Francisco ou similar
-        const fontStyle = document.createElement('style');
-        fontStyle.textContent = `
-          * {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        // Aplica estilo para trabalhar com Tailwind CSS 4 Browser
+        const tailwindStyle = document.createElement('style');
+        tailwindStyle.setAttribute('type', 'text/tailwindcss');
+        tailwindStyle.textContent = `
+          @theme {
+            --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --color-background: #f9fafb;
+            --color-blue-500: #3b82f6;
+            --color-blue-600: #2563eb;
           }
-          body {
-            @apply bg-neutral-50;
-          }
-          button, .btn, [type="button"], [type="submit"] {
-            @apply rounded-lg px-4 py-2 font-medium transition duration-200 ease-in-out;
-            @apply bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400;
-          }
-          input, select, textarea {
-            @apply rounded-lg border border-neutral-300 px-4 py-2 focus-visible:border-blue-500 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:outline-none;
-          }
-          h1, h2, h3, h4, h5, h6 {
-            @apply font-medium leading-tight;
+          
+          @layer base {
+            body {
+              font-family: var(--font-family-sans);
+              background-color: var(--color-background);
+            }
+            
+            button, .btn, [type="button"], [type="submit"] {
+              @apply rounded-lg px-4 py-2 font-medium transition duration-200 ease-in-out;
+              @apply bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400;
+            }
+            
+            input, select, textarea {
+              @apply rounded-lg border border-neutral-300 px-4 py-2 focus-visible:border-blue-500 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:outline-none;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+              @apply font-medium leading-tight;
+            }
           }
         `;
+        document.head.appendChild(tailwindStyle);
         document.head.appendChild(fontStyle);
         
         // Aplica classes do Tailwind para elementos comuns
@@ -281,20 +295,23 @@
   
       // Ajusta fontes para melhor legibilidade
       static adjustFonts() {
-        const style = document.createElement('style');
-        style.textContent = `
-          @media (max-width: 768px) {
-            body {
-              font-size: 16px !important;
-              line-height: 1.5 !important;
+        const fontStyle = document.createElement('style');
+        fontStyle.setAttribute('type', 'text/tailwindcss');
+        fontStyle.textContent = `
+          @layer utilities {
+            @media (max-width: 768px) {
+              body {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+              }
+              h1 { font-size: 1.8rem !important; }
+              h2 { font-size: 1.5rem !important; }
+              h3 { font-size: 1.3rem !important; }
+              .mm-small-mobile { font-size: 0.875rem !important; }
             }
-            h1 { font-size: 1.8rem !important; }
-            h2 { font-size: 1.5rem !important; }
-            h3 { font-size: 1.3rem !important; }
-            .mm-small-mobile { font-size: 0.875rem !important; }
           }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(fontStyle);
         
         // Procura textos muito pequenos e ajusta
         document.querySelectorAll('p, span, div').forEach(el => {
