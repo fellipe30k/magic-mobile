@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MagicMobile.js Demo</title>
+  <!-- Tailwind CSS 4 (opcional) -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@4.0.0/dist/tailwind.min.css" rel="stylesheet">
+  
+  <!-- MagicMobile.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/gh/fellipe30k/magic-mobile/MagicMobile.js"></script>
+  
+  <style>
+    /* Estilos adicionais para demonstração */
+    .demo-section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .demo-title {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="p-4 border-b">
+    <div class="flex justify-between items-center">
+      <a href="#" class="text-xl font-bold">MagicMobile Demo</a>
+      <nav>
+        <a href="#sobre" class="px-2">Sobre</a>
+        <a href="#recursos" class="px-2">Recursos</a>
+        <a href="#demos" class="px-2">Demos</a>
+        <a href="#instalacao" class="px-2">Instalação</a>
+        <a href="#contato" class="px-2">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="p-4 max-w-6xl mx-auto">
+    <section id="sobre" class="my-8 text-center">
+      <h1 class="text-3xl font-bold mb-2">MagicMobile.js</h1>
+      <p class="text-xl mb-4">Transforme qualquer site para mobile com um passe de mágica! ✨📱</p>
+      <p class="mb-4">Redimensione a janela para ver a transformação acontecer!</p>
+      <div class="flex gap-4 justify-center">
+        <a href="#instalacao" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Começar</a>
+        <a href="https://github.com/fellipe30k/magic-mobile" class="bg-gray-800 text-white px-4 py-2 rounded-lg">GitHub</a>
+      </div>
+    </section>
+    
+    <section id="recursos" class="my-8">
+      <h2 class="text-2xl font-bold mb-4 text-center">Recursos</h2>
+      
+      <div class="grid grid-cols-3 gap-4">
+        <div class="card p-4">
+          <h3 class="font-semibold mb-2">📱 Responsivo</h3>
+          <p>Adapta qualquer layout para exibição perfeita em dispositivos móveis.</p>
+        </div>
+        
+        <div class="card p-4">
+          <h3 class="font-semibold mb-2">🎨 Estilo Apple</h3>
+          <p>Componentes com design clean inspirado na estética da Apple.</p>
+        </div>
+        
+        <div class="card p-4">
+          <h3 class="font-semibold mb-2">🌙 Modo Escuro</h3>
+          <p>Suporte integrado para esquema de cores escuro baseado nas preferências do usuário.</p>
+        </div>
+        
+        <div class="card p-4">
+          <h3 class="font-semibold mb-2">📊 Tabelas</h3>
+          <p>Torna tabelas complexas utilizáveis em dispositivos móveis.</p>
+        </div>
+        
+        <div class="card p-4">
+          <h3 class="font-semibold mb-2">🖼️ Imagens</h3>
+          <p>Otimiza imagens com carregamento lazy e dimensionamento responsivo.</p>
+        </div>
+        
+        <div class="card p-4">
+          <h3 class="font-semibold mb-2">📝 Formulários</h3>
+          <p>Melhora a usabilidade de formulários em dispositivos touch.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section id="demos" class="my-8">
+      <h2 class="text-2xl font-bold mb-4 text-center">Demonstrações</h2>
+      
+      <div class="demo-section">
+        <h3 class="demo-title text-xl font-semibold">Menu Responsivo</h3>
+        <p class="text-center mb-4">Em telas pequenas, o menu se transforma automaticamente em um menu hamburger.</p>
+      </div>
+      
+      <div class="demo-section">
+        <h3 class="demo-title text-xl font-semibold">Grid Responsivo</h3>
+        <div class="grid grid-cols-4 gap-4">
+          <div class="bg-blue-100 p-4 rounded">Item 1</div>
+          <div class="bg-blue-100 p-4 rounded">Item 2</div>
+          <div class="bg-blue-100 p-4 rounded">Item 3</div>
+          <div class="bg-blue-100 p-4 rounded">Item 4</div>
+        </div>
+      </div>
+      
+      <div class="demo-section">
+        <h3 class="demo-title text-xl font-semibold">Tabela Responsiva</h3>
+        <table class="w-full border">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="p-2 border">Produto</th>
+              <th class="p-2 border">Descrição</th>
+              <th class="p-2 border">Preço</th>
+              <th class="p-2 border">Disponibilidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-2 border">Produto A</td>
+              <td class="p-2 border">Descrição do produto A com alguns detalhes adicionais.</td>
+              <td class="p-2 border">R$ 99,90</td>
+              <td class="p-2 border">Em estoque</td>
+            </tr>
+            <tr>
+              <td class="p-2 border">Produto B</td>
+              <td class="p-2 border">Descrição do produto B com alguns detalhes adicionais.</td>
+              <td class="p-2 border">R$ 149,90</td>
+              <td class="p-2 border">Pré-venda</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="demo-section">
+        <h3 class="demo-title text-xl font-semibold">Formulário Otimizado</h3>
+        <form class="border p-4 rounded">
+          <div class="mb-4">
+            <label class="block mb-1" for="nome">Nome:</label>
+            <input class="w-full p-2 border rounded" type="text" id="nome" placeholder="Seu nome">
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1" for="email">Email:</label>
+            <input class="w-full p-2 border rounded" type="email" id="email" placeholder="seu@email.com">
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1">Preferências:</label>
+            <div class="flex flex-wrap gap-2">
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="mr-1"> Opção 1
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="mr-1"> Opção 2
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="mr-1"> Opção 3
+              </label>
+            </div>
+          </div>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+    
+    <section id="instalacao" class="my-8">
+      <h2 class="text-2xl font-bold mb-4 text-center">Instalação</h2>
+      
+      <div class="bg-gray-100 p-4 rounded-lg mb-4">
+        <pre class="overflow-x-auto"><code>&lt;!-- Tailwind CSS (opcional) --&gt;
+&lt;link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"&gt;
+
+&lt;!-- MagicMobile.js --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/fellipe30k/magic-mobile/MagicMobile.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function() {
+    MagicMobile.transform();
+  });
+&lt;/script&gt;</code></pre>
+      </div>
+      
+      <div class="text-center">
+        <a href="https://github.com/fellipe30k/magic-mobile" class="bg-gray-800 text-white px-4 py-2 rounded-lg">Ver no GitHub</a>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="p-4 bg-gray-100 mt-8">
+    <div class="flex justify-between items-center">
+      <p>&copy; 2025 MagicMobile.js</p>
+      <div>
+        <a href="https://github.com/fellipe30k/magic-mobile" class="px-2">GitHub</a>
+        <a href="#" class="px-2">Documentação</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Inicialização do MagicMobile -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      MagicMobile.transform({
+        appleStyle: true,
+        fixNavigation: true,
+        optimizeImages: true,
+        adjustFonts: true,
+        darkMode: true
+      });
+    });
+  </script>
+</body>
+</html>
